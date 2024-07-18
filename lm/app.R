@@ -104,6 +104,8 @@ server <- function(input, output) {
   update_compare <- function(){
     df <- dataInput()
     model <- lm(y~x,data=df)
+    s <- coef(model)[2]
+    i <- coef(model)[1]
     df$fitted <- model$fitted.values
     names(df) <- c("original","test_x","predicted")
     dfm <- melt(df,id.var="test_x",variable.name="y_type",value.name = "y_value")
